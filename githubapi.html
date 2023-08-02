@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub Repositories Search</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>GitHub Repositories Search</h1>
+<form id="searchForm">
+  <label for="language">Enter a programming language:</label>
+  <input type="text" id="language" name="language" required>
+  <button type="submit">Search</button>
+</form>
+<div id="results"></div>
+
+<script>
+  $("#searchForm").on("submit", function (event) {
+    event.preventDefault();
+    var language = $("#language").val();
+    fetchRepositories(language);
+  });
+
+  function fetchRepositories(language) {
+    $.ajax({
+      url: "search_repositories.php",
+      type: "POST",
+      data: { language: language },
+      success: function (response) {
+        $("#results").html(response);
+      },
+      error: function () {
+        $("#results").html("<p>Failed to fetch repositories. Please try again later.</p>");
+      }
+    });
+  }
+</script>
+</body>
+</html>
+s

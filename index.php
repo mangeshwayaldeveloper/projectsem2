@@ -1,6 +1,17 @@
+<?php
+// Start a session to access user details
+session_start();
+
+// Check if the user clicked the logout link
+if (isset($_GET['logout'])) {
+    // If logout link is clicked, unset the session variable and destroy the session
+    unset($_SESSION['username']);
+    session_destroy();
+}
+?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Basic -->
     <meta charset="utf-8"/>
@@ -31,10 +42,10 @@
     <link href="css/responsive.css" rel="stylesheet"/>
 
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
+    <!--    button stylesheet-->
+    <link rel="stylesheet" href="neon.css"/>
 
 </head>
-
 <body>
 
 <div class="hero_area">
@@ -42,20 +53,20 @@
     <header class="header_section">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <span>Innovate Together</span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class=""> </span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav  ml-auto">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html"> About</a>
@@ -69,19 +80,30 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact Us</a>
                         </li>
+
+                        <?php
+                        // Check if the user is logged in (session variable exists)
+                        if (isset($_SESSION['username'])) {
+                            // If the user is logged in, show the user's name and a logout link
+                            $username = $_SESSION['username'];
+                            echo '<li class="nav-item"><span class="nav-link">Welcome, ' . $username . '</span></li>';
+                            echo '<li class="nav-item"><a class="nav-link" href="index.php?logout" id="rgbnt">
+ <span class="spbtn"></span>
+      <span class="spbtn"></span>
+      <span class="spbtn"></span>
+      <span class="spbtn"></span>
+Logout</a></li>';
+                        } else {
+                            // If the user is not logged in, show the signup/login link
+                            echo '<li class="nav-item"><a class="nav-link" href="register.html" id="rgbnt">
+<span class="spbtn"></span>
+      <span class="spbtn"></span>
+      <span class="spbtn"></span>
+      <span class="spbtn"></span>
+      Signup/Login</a></li>';
+                        }
+                        ?>
                     </ul>
-                    <div class="quote_btn-container">
-                        <form class="form-inline">
-                            <button class="btn   nav_search-btn" type="submit">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </form>
-                        <a href="">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            <span><button>Register</button>
-                </span>
-                        </a>
-                    </div>
                 </div>
             </nav>
         </div>
@@ -103,8 +125,8 @@
                                     <p>
                                         You Can Contribute a Variety of projects</p>
                                     <div class="btn-box">
-                                        <a href="" class="btn-1">
-                                            Get Projects
+                                        <a href="projectdetails.php" class="btn-1">
+                                            Get Started
                                         </a>
                                         <a href="" class="btn-2">
                                             Contact Us
@@ -117,7 +139,8 @@
                                     <div class=" col-lg-10 mx-auto">
                                         <div class="img-box">
                                             <!--                        <img src="images/slider-img.png" alt="">-->
-                                            <lottie-player src="images/animation_lksbgwvr.json" background="transparent" speed="1"
+                                            <lottie-player src="images/animation_lksbgwvr.json" background="transparent"
+                                                           speed="1"
                                                            style="width: 500px; height: 500px;" loop
                                                            autoplay></lottie-player>
                                         </div>
@@ -152,7 +175,8 @@
                                 <div class="row">
                                     <div class=" col-lg-10 mx-auto">
                                         <div class="img-box">
-                                            <lottie-player src="images/animation_mentor.json" background="transparent" speed="1"
+                                            <lottie-player src="images/animation_mentor.json" background="transparent"
+                                                           speed="1"
                                                            style="width: 450px; height: 450px;" loop
                                                            autoplay></lottie-player>
                                         </div>
@@ -186,7 +210,8 @@
                                 <div class="row">
                                     <div class=" col-lg-10 mx-auto">
                                         <div class="img-box">
-                                            <lottie-player src="images/animation_chat.json" background="transparent" speed="1"
+                                            <lottie-player src="images/animation_chat.json" background="transparent"
+                                                           speed="1"
                                                            style="width: 500px; height: 500px;" loop
                                                            autoplay></lottie-player>
                                         </div>
@@ -218,7 +243,7 @@
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-                Our Services
+                Projects Available
             </h2>
         </div>
     </div>
@@ -231,10 +256,10 @@
                     </div>
                     <div class="detail-box">
                         <h4>
-                            Shared Hosting
+                            Data Science and BI
                         </h4>
                         <p>
-                            Generators on the Internet tend to repeat predefined chunks as necessary
+                            Extracting insights from data for informed decisions.
                         </p>
                         <a href="">
                             Read More
@@ -247,14 +272,14 @@
             <div class="col-md-6 col-lg-4">
                 <div class="box ">
                     <div class="img-box">
-                        <img src="images/s2.png" alt="">
+                        <img src="images/aiml.png" alt="">
                     </div>
                     <div class="detail-box">
                         <h4>
-                            Dedicated Hosting
+                            AI/ML
                         </h4>
                         <p>
-                            Generators on the Internet tend to repeat predefined chunks as necessary
+                            Creating intelligent systems and smart devices
                         </p>
                         <a href="">
                             Read More
@@ -271,10 +296,10 @@
                     </div>
                     <div class="detail-box">
                         <h4>
-                            Cloud Hosting
+                            Cloud Application Development
                         </h4>
                         <p>
-                            Generators on the Internet tend to repeat predefined chunks as necessary
+                            Building flexible apps on cloud platforms
                         </p>
                         <a href="">
                             Read More
@@ -291,10 +316,10 @@
                     </div>
                     <div class="detail-box">
                         <h4>
-                            VPS Hosting
+                            DevOps
                         </h4>
                         <p>
-                            Generators on the Internet tend to repeat predefined chunks as necessary
+                            Streamlining software development and deployment
                         </p>
                         <a href="">
                             Read More
@@ -311,10 +336,11 @@
                     </div>
                     <div class="detail-box">
                         <h4>
-                            Wordpress Hosting
+                            Application Development
                         </h4>
                         <p>
-                            Generators on the Internet tend to repeat predefined chunks as necessary
+                            Creating diverse software applications.And deploy the applications
+
                         </p>
                         <a href="">
                             Read More
@@ -331,10 +357,10 @@
                     </div>
                     <div class="detail-box">
                         <h4>
-                            Domain Name
+                            Other
                         </h4>
                         <p>
-                            Generators on the Internet tend to repeat predefined chunks as necessary
+                            Miscellaneous projects and niche technologies.
                         </p>
                         <a href="">
                             Read More
@@ -362,11 +388,12 @@
                             About Us
                         </h2>
                     </div>
-                    <p>
-                        Words which don't look even slightly believable. If you are going to use a passage of Lorem
-                        Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All
-                        the Lorem Ipsum generators on the Internet tend to repeat predefined chunks </p>
-                    <a href="">
+                    <p style="font-weight: bold">
+                        "Innovate Together is a collaborative platform that empowers new users to contribute to
+                        open-source projects, fostering skill development and expanding career opportunities. Join a
+                        community of innovative minds to make a positive impact on the world of technology and
+                        beyond." </p>
+                    <a href="about.html">
                         Read More
                     </a>
                 </div>
@@ -386,167 +413,50 @@
 
 <!-- server section -->
 
-<section class="server_section">
-    <div class="container ">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="img-box">
-                    <img src="images/server-img.jpg" alt="">
-                    <div class="play_btn">
-                        <button>
-                            <i class="fa fa-play" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="detail-box">
-                    <div class="heading_container">
-                        <h2>
-                            Let us manage your server
-                        </h2>
-                        <p>
-                            Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model
-                            sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem
-                            Ipsum is therefore
-                        </p>
-                    </div>
-                    <a href="">
-                        Read More
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--<section class="project_section">-->
+<!--    <div class="container ">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="img-box">-->
+<!--                    <img src="images/server-img.jpg" alt="">-->
+<!--                    <div class="play_btn">-->
+<!--                        <button>-->
+<!--                            <i class="fa fa-play" aria-hidden="true"></i>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="detail-box">-->
+<!--                    <div class="heading_container">-->
+<!--                        <h2>-->
+<!--                            Let us manage your server-->
+<!--                        </h2>-->
+<!--                        <p>-->
+<!--                            Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model-->
+<!--                            sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem-->
+<!--                            Ipsum is therefore-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                    <a href="">-->
+<!--                        Read More-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
 <!-- end server section -->
 
-<!-- price section -->
-
-<section class="price_section layout_padding">
-    <div class="container">
-        <div class="heading_container heading_center">
-            <h2>
-                Our Pricing
-            </h2>
-        </div>
-        <div class="price_container ">
-            <div class="box">
-                <div class="detail-box">
-                    <h2>$ <span>49</span></h2>
-                    <h6>
-                        Startup
-                    </h6>
-                    <ul class="price_features">
-                        <li>
-                            2GB RAM
-                        </li>
-                        <li>
-                            20GB SSD Cloud Storage
-                        </li>
-                        <li>
-                            Weekly Backups
-                        </li>
-                        <li>
-                            DDoS Protection
-                        </li>
-                        <li>
-                            Full Root Access
-                        </li>
-                        <li>
-                            24/7/365 Tech Support
-                        </li>
-                    </ul>
-                </div>
-                <div class="btn-box">
-                    <a href="">
-                        See Detail
-                    </a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="detail-box">
-                    <h2>$ <span>99</span></h2>
-                    <h6>
-                        Standard
-                    </h6>
-                    <ul class="price_features">
-                        <li>
-                            4GB RAM
-                        </li>
-                        <li>
-                            50GB SSD Cloud Storage
-                        </li>
-                        <li>
-                            Weekly Backups
-                        </li>
-                        <li>
-                            DDoS Protection
-                        </li>
-                        <li>
-                            Full Root Access
-                        </li>
-                        <li>
-                            24/7/365 Tech Support
-                        </li>
-                    </ul>
-                </div>
-                <div class="btn-box">
-                    <a href="">
-                        See Detail
-                    </a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="detail-box">
-                    <h2>$ <span>149</span></h2>
-                    <h6>
-                        Business
-                    </h6>
-                    <ul class="price_features">
-                        <li>
-                            8GB RAM
-                        </li>
-                        <li>
-                            100GB SSD Cloud Storage
-                        </li>
-                        <li>
-                            Weekly Backups
-                        </li>
-                        <li>
-                            DDoS Protection
-                        </li>
-                        <li>
-                            Full Root Access
-                        </li>
-                        <li>
-                            24/7/365 Tech Support
-                        </li>
-                    </ul>
-                </div>
-                <div class="btn-box">
-                    <a href="">
-                        See Detail
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- price section -->
 
 <!-- client section -->
 <section class="client_section ">
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-                Testimonial
+                Contributors Review
             </h2>
-            <p>
-                Even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to
-            </p>
         </div>
     </div>
     <div class="container px-0">
@@ -558,31 +468,27 @@
                             <div class="col-md-10 mx-auto">
                                 <div class="box">
                                     <div class="img-box">
-                                        <img src="images/client.jpg" alt="">
+                                        <img src="images/vinay.png" alt="">
                                     </div>
                                     <div class="detail-box">
                                         <div class="client_info">
                                             <div class="client_name">
                                                 <h5>
-                                                    Morojink
+                                                    Vinay
                                                 </h5>
                                                 <h6>
-                                                    Customer
+                                                    Data Scientist
                                                 </h6>
                                             </div>
                                             <i class="fa fa-quote-left" aria-hidden="true"></i>
                                         </div>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut
-                                            labore
-                                            et
-                                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                            ullamco laboris nisi ut
-                                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                                            voluptate velit esse
-                                            cillum
-                                            dolore eu fugia
+                                            Innovate Together is a game-changer! The community's feedback has been
+                                            invaluable, propelling my growth as a contributor. It's an inspiring
+                                            platform for skill development and making a positive impact in the
+                                            open-source world. Highly recommended!"
+
+
                                         </p>
                                     </div>
                                 </div>
@@ -596,31 +502,27 @@
                             <div class="col-md-10 mx-auto">
                                 <div class="box">
                                     <div class="img-box">
-                                        <img src="images/client.jpg" alt="">
+                                        <img src="images/rohan.png" alt="">
                                     </div>
                                     <div class="detail-box">
                                         <div class="client_info">
                                             <div class="client_name">
                                                 <h5>
-                                                    Morojink
+                                                    Rohan
                                                 </h5>
                                                 <h6>
-                                                    Customer
+                                                    Web Developer
                                                 </h6>
                                             </div>
                                             <i class="fa fa-quote-left" aria-hidden="true"></i>
                                         </div>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut
-                                            labore
-                                            et
-                                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                            ullamco laboris nisi ut
-                                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                                            voluptate velit esse
-                                            cillum
-                                            dolore eu fugia
+                                            "Innovate Together has been instrumental in my journey as a web developer.
+                                            The diverse open-source projects and collaborative community have honed my
+                                            skills and boosted my confidence. The feedback from mentors and peers has
+                                            been invaluable, and I feel well-prepared to take on new challenges in the
+                                            web development field. Highly recommended for aspiring web developers
+                                            seeking growth and meaningful connections."
                                         </p>
                                     </div>
                                 </div>
@@ -634,31 +536,27 @@
                             <div class="col-md-10 mx-auto">
                                 <div class="box">
                                     <div class="img-box">
-                                        <img src="images/client.jpg" alt="">
+                                        <img src="images/arundhati.png" alt="">
                                     </div>
                                     <div class="detail-box">
                                         <div class="client_info">
                                             <div class="client_name">
                                                 <h5>
-                                                    Morojink
+                                                    Anuradha
                                                 </h5>
                                                 <h6>
-                                                    Customer
+                                                    Backend Developer
                                                 </h6>
                                             </div>
                                             <i class="fa fa-quote-left" aria-hidden="true"></i>
                                         </div>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut
-                                            labore
-                                            et
-                                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                            ullamco laboris nisi ut
-                                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                                            voluptate velit esse
-                                            cillum
-                                            dolore eu fugia
+                                            "Innovate Together transformed my backend development journey. The
+                                            open-source projects and supportive community accelerated my learning and
+                                            expanded my expertise. Invaluable feedback and mentorship refined my coding
+                                            practices, making me more confident in tackling complex challenges. Joining
+                                            Innovate Together is a must for any backend developer seeking growth and
+                                            meaningful contributions."
                                         </p>
                                     </div>
                                 </div>
@@ -739,29 +637,29 @@
                         <a href="">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             <span>
-                  Call +01 1234567890
+                  Call +917083238134
                 </span>
                         </a>
                         <a href="">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             <span>
-                  demo@gmail.com
+                  mangeshwayal4@gmail.com
                 </span>
                         </a>
                     </div>
                 </div>
                 <div class="info_social">
-                    <a href="">
+                    <a href="https://www.facebook.com/Mangeshwayal4">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                     </a>
-                    <a href="">
+                    <a href="https://twitter.com/mangesh_wayal">
                         <i class="fa fa-twitter" aria-hidden="true"></i>
                     </a>
-                    <a href="">
+                    <a href="linkedin.com/in/mangesh-wayal-548768191/">
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
                     </a>
-                    <a href="">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                    <a href="https://github.com/mangeshwayaldeveloper">
+                        <i class="fa fa-github" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -771,7 +669,7 @@
                         Links
                     </h4>
                     <div class="info_links">
-                        <a class="active" href="index.html">
+                        <a class="active" href="index.php">
                             <img src="images/nav-bullet.png" alt="">
                             Home
                         </a>
@@ -781,11 +679,11 @@
                         </a>
                         <a class="" href="project.html">
                             <img src="images/nav-bullet.png" alt="">
-                            Services
+                            Project
                         </a>
-                        <a class="" href="price.html">
+                        <a class="" href="mentor.html">
                             <img src="images/nav-bullet.png" alt="">
-                            Pricing
+                            Mentors
                         </a>
                         <a class="" href="contact.html">
                             <img src="images/nav-bullet.png" alt="">
@@ -800,8 +698,11 @@
                         Info
                     </h4>
                     <p>
-                        necessary, making this the first true generator on the Internet. It uses a dictionary of over
-                        200 Latin words, combined with a handful
+
+                        "Innovate Together - Empowering Collaborative Innovation | Join our vibrant community to
+                        contribute to open-source projects, enhance your skills, and make a positive impact. Become part
+                        of a transformative journey in technology and beyond. Connect, learn, and lead with confidence.
+                        #InnovateTogether"
                     </p>
                 </div>
             </div>
@@ -828,7 +729,7 @@
     <div class="container">
         <p>
             &copy; <span id="displayYear"></span> All Rights Reserved By
-            <a href="https://html.design/">Free Html Templates</a>
+            <a href="https://html.design/">Innovate Together</a>
         </p>
     </div>
 </footer>
