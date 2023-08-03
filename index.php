@@ -69,16 +69,16 @@ if (isset($_GET['logout'])) {
                             <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html"> About</a>
+                            <a class="nav-link" href="about.php"> About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="project.html">Projects</a>
+                            <a class="nav-link" href="project.php">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="mentor.html">Hire a Mentor</a>
+                            <a class="nav-link" href="mentor.php">Hire a Mentor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact Us</a>
+                            <a class="nav-link" href="contact.php">Contact Us</a>
                         </li>
 
                         <?php
@@ -261,8 +261,8 @@ Logout</a></li>';
                         <p>
                             Extracting insights from data for informed decisions.
                         </p>
-                        <a href="">
-                            Read More
+                        <a href="data_science.php">
+                            Explore Now
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 
                         </a>
@@ -281,8 +281,8 @@ Logout</a></li>';
                         <p>
                             Creating intelligent systems and smart devices
                         </p>
-                        <a href="">
-                            Read More
+                        <a href="aiml.php">
+                            Explore Now
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 
                         </a>
@@ -301,8 +301,8 @@ Logout</a></li>';
                         <p>
                             Building flexible apps on cloud platforms
                         </p>
-                        <a href="">
-                            Read More
+                        <a href="cloudApplications.php">
+                            Explore Now
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 
                         </a>
@@ -321,8 +321,8 @@ Logout</a></li>';
                         <p>
                             Streamlining software development and deployment
                         </p>
-                        <a href="">
-                            Read More
+                        <a href="devops.php">
+                            Explore Now
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 
                         </a>
@@ -342,8 +342,8 @@ Logout</a></li>';
                             Creating diverse software applications.And deploy the applications
 
                         </p>
-                        <a href="">
-                            Read More
+                        <a href="applications.php">
+                            Explore Now
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 
                         </a>
@@ -357,13 +357,13 @@ Logout</a></li>';
                     </div>
                     <div class="detail-box">
                         <h4>
-                            Other
+                            Web Apps
                         </h4>
                         <p>
-                            Miscellaneous projects and niche technologies.
+                            All web projects front end backend projects. And other miscellaneous
                         </p>
-                        <a href="">
-                            Read More
+                        <a href="webapps.php">
+                            Explore Now
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 
                         </a>
@@ -393,7 +393,7 @@ Logout</a></li>';
                         open-source projects, fostering skill development and expanding career opportunities. Join a
                         community of innovative minds to make a positive impact on the world of technology and
                         beyond." </p>
-                    <a href="about.html">
+                    <a href="about.php">
                         Read More
                     </a>
                 </div>
@@ -413,7 +413,7 @@ Logout</a></li>';
 
 <!-- server section -->
 
-<!--<section class="project_section">-->
+<!--<section class="server_section">-->
 <!--    <div class="container ">-->
 <!--        <div class="row">-->
 <!--            <div class="col-md-6">-->
@@ -439,7 +439,7 @@ Logout</a></li>';
 <!--                        </p>-->
 <!--                    </div>-->
 <!--                    <a href="">-->
-<!--                        Read More-->
+<!--                        Explore Now-->
 <!--                    </a>-->
 <!--                </div>-->
 <!--            </div>-->
@@ -673,19 +673,19 @@ Logout</a></li>';
                             <img src="images/nav-bullet.png" alt="">
                             Home
                         </a>
-                        <a class="" href="about.html">
+                        <a class="" href="about.php">
                             <img src="images/nav-bullet.png" alt="">
                             About
                         </a>
-                        <a class="" href="project.html">
+                        <a class="" href="project.php">
                             <img src="images/nav-bullet.png" alt="">
                             Project
                         </a>
-                        <a class="" href="mentor.html">
+                        <a class="" href="mentor.php">
                             <img src="images/nav-bullet.png" alt="">
                             Mentors
                         </a>
-                        <a class="" href="contact.html">
+                        <a class="" href="contact.php">
                             <img src="images/nav-bullet.png" alt="">
                             Contact Us
                         </a>
