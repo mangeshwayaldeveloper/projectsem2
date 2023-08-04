@@ -151,7 +151,7 @@ Logout</a></li>';
 <div class="wrap">
     <div class="box">
         <div class="box-top">
-            <img class="box-image" src="images/mahesh.jpg" alt="Mahesh">
+            <img class="box-image" src="images/client.jpg" alt="Mahesh">
             <div class="title-flex">
                 <h3 class="box-title">Mahesh Moholkar</h3>
                 <p class="user-follow-info">17 Projects</p>
@@ -162,7 +162,7 @@ Logout</a></li>';
     </div>
     <div class="box">
         <div class="box-top">
-            <img class="box-image" src="images/shubham.jpeg" alt="shubham">
+            <img class="box-image" src="images/mentor2.png" alt="shubham">
             <div class="title-flex">
                 <h3 class="box-title">Shubham </h3>
                 <p class="user-follow-info">33 Projects</p>
@@ -173,7 +173,7 @@ Logout</a></li>';
     </div>
     <div class="box">
         <div class="box-top">
-            <img class="box-image" src="images/ashish.jpeg" alt="ashish">
+            <img class="box-image" src="images/mentor3.jpg" alt="ashish">
             <div class="title-flex">
                 <h3 class="box-title">Ashish</h3>
                 <p class="user-follow-info">26 Projects</p>
@@ -184,7 +184,7 @@ Logout</a></li>';
     </div>
     <div class="box">
         <div class="box-top">
-            <img class="box-image" src="images/sumit.jpeg" alt="sumit">
+            <img class="box-image" src="images/mentor4.jpg" alt="sumit">
             <div class="title-flex">
                 <h3 class="box-title">Sumit</h3>
                 <p class="user-follow-info">12 Projects</p>

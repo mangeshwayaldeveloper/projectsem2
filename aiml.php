@@ -138,7 +138,7 @@ Logout</a></li>';
                                     <div class=" col-lg-10 mx-auto">
                                         <div class="img-box">
                                             <!--                        <img src="images/slider-img.png" alt="">-->
-                                            <lottie-player src="images/animation_lksbgwvr.json" background="transparent"
+                                            <lottie-player src="images/ai.json" background="transparent"
                                                            speed="1"
                                                            style="width: 500px; height: 500px;" loop
                                                            autoplay></lottie-player>

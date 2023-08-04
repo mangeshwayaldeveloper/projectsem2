@@ -1,0 +1,17 @@
+.bg-custom-1 {
+}
+
+.bg-custom-2 {
+}
+
+.navbar-brand {
+    font-size: 14px;
+    color: white;
+}
+.navbar-brand:hover{
+    transform-style: preserve-3d;
+    color: white;
+}
+#navbar_margin{
+    margin-top: -10px;
+}

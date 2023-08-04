@@ -44,6 +44,7 @@ if (isset($_GET['logout'])) {
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <!--    button stylesheet-->
     <link rel="stylesheet" href="neon.css"/>
+    <link rel="stylesheet" href="css/userprofile.css">
 
 </head>
 <body>
@@ -63,7 +64,7 @@ if (isset($_GET['logout'])) {
                     <span class=""> </span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-top: 10px">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -86,7 +87,20 @@ if (isset($_GET['logout'])) {
                         if (isset($_SESSION['username'])) {
                             // If the user is logged in, show the user's name and a logout link
                             $username = $_SESSION['username'];
-                            echo '<li class="nav-item"><span class="nav-link">Welcome, ' . $username . '</span></li>';
+                            echo '<li class="nav-item"><span class="nav-link">
+<nav class="navbar navbar-expand-sm" id="navbar_margin">
+  <a class="navbar-brand" href="profile.php">
+  Welcome '.$username.'
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a href="profile.php">
+  <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle">
+  </a>
+</nav>
+
+</span></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="index.php?logout" id="rgbnt">
  <span class="spbtn"></span>
       <span class="spbtn"></span>
@@ -407,49 +421,6 @@ Logout</a></li>';
         </div>
     </div>
 </section>
-
-<!-- end about section -->
-
-
-<!-- server section -->
-
-<!--<section class="server_section">-->
-<!--    <div class="container ">-->
-<!--        <div class="row">-->
-<!--            <div class="col-md-6">-->
-<!--                <div class="img-box">-->
-<!--                    <img src="images/server-img.jpg" alt="">-->
-<!--                    <div class="play_btn">-->
-<!--                        <button>-->
-<!--                            <i class="fa fa-play" aria-hidden="true"></i>-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-md-6">-->
-<!--                <div class="detail-box">-->
-<!--                    <div class="heading_container">-->
-<!--                        <h2>-->
-<!--                            Let us manage your server-->
-<!--                        </h2>-->
-<!--                        <p>-->
-<!--                            Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model-->
-<!--                            sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem-->
-<!--                            Ipsum is therefore-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                    <a href="">-->
-<!--                        Explore Now-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
-<!-- end server section -->
-
-
 <!-- client section -->
 <section class="client_section ">
     <div class="container">

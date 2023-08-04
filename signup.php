@@ -12,13 +12,14 @@ $conn = mysqli_connect($host, $username, $pass, $databasename);
 //}
 $name= $_POST['name'];
 $email = $_POST['email'];
+$url = $_POST['url'];
 $password = $_POST['password'];
 
 try {
     if (!empty($name) && !empty($email) && !empty($password)) {
-        $sql = "INSERT INTO users (username,email,password) VALUES (?, ?,?)";
+        $sql = "INSERT INTO users (username,email,password,url) VALUES (?, ?,?,?)";
         $stmt=mysqli_prepare($conn,$sql);
-        mysqli_stmt_bind_param($stmt,"sss",$name,$email,$password);
+        mysqli_stmt_bind_param($stmt,"ssss",$name,$email,$password,$url);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 //        if (mysqli_stmt_affected_rows($stmt)>0) {
@@ -37,23 +38,23 @@ try {
 
 
 //fecthing data
-$sql="SELECT * FROM users";
-$result=$conn->query($sql);
-if ($result->num_rows>0){
-    while($row=$result->fetch_assoc()){
-        $name=$row["username"];
-        $email=$row["email"];
-        $password=$row["password"];
-        echo "<h4>Student Record</h4><br>";
-        echo "First Name: " . $name . "<br>";
-        echo "Last Name: " . $email . "<br>";
-        echo "College: " . $password. "<br>";
-        echo "<br>";
-    }
-}else{
-
-    echo "no data found";
-
-}
+//$sql="SELECT * FROM users";
+//$result=$conn->query($sql);
+//if ($result->num_rows>0){
+//    while($row=$result->fetch_assoc()){
+//        $name=$row["username"];
+//        $email=$row["email"];
+//        $password=$row["password"];
+//        echo "<h4>Student Record</h4><br>";
+//        echo "First Name: " . $name . "<br>";
+//        echo "Last Name: " . $email . "<br>";
+//        echo "College: " . $password. "<br>";
+//        echo "<br>";
+//    }
+//}else{
+//
+//    echo "no data found";
+//
+//}
 mysqli_close($conn);
 ?>
