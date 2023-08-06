@@ -246,7 +246,7 @@ Logout</a></li>';
     }
 
     // Replace "YOUR_PERSONAL_ACCESS_TOKEN" with your actual Personal Access Token
-    $accessToken = "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";
+    $accessToken = "Your Access Toeken";
     $githubUrl = 'https://github.com/AshishJadhav45';
     // Your GitHub URL
 
