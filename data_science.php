@@ -52,6 +52,39 @@ if (isset($_GET['logout'])) {
     <!--    button stylesheet-->
     <link rel="stylesheet" href="neon.css"/>
 
+    <style>
+        /* Styles for card view */
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .card p {
+            margin-bottom: 0;
+        }
+        .view-repo-btn {
+            display: block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .view-repo-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
@@ -152,129 +185,70 @@ Logout</a></li>';
             </div>
     </section>
 </div>
-<h1 style="text-align: center;margin-top: 20px;margin-bottom: 20px" >Projects Available</h1>
-<div class="box">
-    <div class="container">
-        <div class="row">
+<h1 style="text-align: center;margin-top: 20px;margin-bottom: 20px" >All Projects</h1>
+<?php
+// ...
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+// Function to fetch all projects from the database
+function fetchAllProjects($pdo)
+{
+    $sql = "SELECT * FROM contributed_projects WHERE category = 'data'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
 
-                <div class="box-part text-center">
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-                    <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
+// Establish a database connection (replace with your database credentials)
+$host = 'localhost:3306';
+$dbname = 'innovatedb';
+$username = 'root';
+$password = '';
 
-                    <div class="title">
-                        <h4>Instagram</h4>
-                    </div>
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    <div class="text">
-                        <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-                    </div>
+    // Fetch all projects from the database
+    $projects = fetchAllProjects($pdo);
+} catch (PDOException $e) {
+    // Handle any database errors
+    echo "Database Error: " . $e->getMessage();
+    // You can also log the error for debugging purposes
+}
 
-                    <a href="#">Learn More</a>
+?>
+<div class="container">
 
+    <div class="row">
+        <?php if (empty($projects)): ?>
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    <strong>No projects available.</strong> Please check back later.
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                <div class="box-part text-center">
-
-                    <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
-
-                    <div class="title">
-                        <h4>Twitter</h4>
+        <?php else: ?>
+            <?php foreach ($projects as $project): ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $project['repository_name']; ?></h5>
+                            <p class="card-text"><?php echo $project['repository_description']; ?></p>
+                            <p class="card-text"><strong>Languages:</strong> <?php echo $project['languages']; ?></p><br>
+                            <a href="<?php echo $project['repo_link']; ?>" class="btn btn-primary" target="_blank">View
+                                Repository</a>
+                        </div>
                     </div>
-
-                    <div class="text">
-                        <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-                    </div>
-
-                    <a href="#">Learn More</a>
-
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                <div class="box-part text-center">
-
-                    <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
-
-                    <div class="title">
-                        <h4>Facebook</h4>
-                    </div>
-
-                    <div class="text">
-                        <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-                    </div>
-
-                    <a href="#">Learn More</a>
-
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                <div class="box-part text-center">
-
-                    <i class="fa fa-pinterest-p fa-3x" aria-hidden="true"></i>
-
-                    <div class="title">
-                        <h4>Pinterest</h4>
-                    </div>
-
-                    <div class="text">
-                        <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-                    </div>
-
-                    <a href="#">Learn More</a>
-
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                <div class="box-part text-center">
-
-                    <i class="fa fa-google-plus fa-3x" aria-hidden="true"></i>
-
-                    <div class="title">
-                        <h4>Google</h4>
-                    </div>
-
-                    <div class="text">
-                        <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-                    </div>
-
-                    <a href="#">Learn More</a>
-
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                <div class="box-part text-center">
-
-                    <i class="fa fa-github fa-3x" aria-hidden="true"></i>
-
-                    <div class="title">
-                        <h4>Github</h4>
-                    </div>
-
-                    <div class="text">
-                        <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-                    </div>
-
-                    <a href="#">Learn More</a>
-
-                </div>
-            </div>
-
-        </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </div>
 
+
+    <!-- Similar code for other categories -->
+    <!-- AI/ML Projects, Cloud Application Development Projects, DevOps Projects, Application Development Projects -->
+</div>
 <footer class="footer_section">
     <div class="container">
         <p>

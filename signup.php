@@ -45,11 +45,13 @@ try {
 //        $name=$row["username"];
 //        $email=$row["email"];
 //        $password=$row["password"];
+//        $url=$row['url'];
 //        echo "<h4>Student Record</h4><br>";
-//        echo "First Name: " . $name . "<br>";
-//        echo "Last Name: " . $email . "<br>";
-//        echo "College: " . $password. "<br>";
-//        echo "<br>";
+//        echo "Name: " . $name . "<br>";
+//        echo "Email: " . $email . "<br>";
+//        echo "Password: " . $password. "<br>";
+//        echo "Url: " . $url. "<br>";
+        echo "<br>";
 //    }
 //}else{
 //

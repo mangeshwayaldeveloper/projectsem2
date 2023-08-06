@@ -562,21 +562,21 @@ Logout</a></li>';
         <div class="row">
             <div class="col-md-8 col-lg-6 mx-auto">
                 <div class="form_container">
-                    <form action="">
+                    <form action="userfeedback.php" method="post" id="myForm" enctype="multipart/form-data">
                         <div>
-                            <input type="text" placeholder="Your Name"/>
+                            <input type="text" placeholder="Your Name" name="name" required/>
                         </div>
                         <div>
-                            <input type="email" placeholder="Your Email"/>
+                            <input type="email" placeholder="Your Email" name="email" required/>
                         </div>
                         <div>
-                            <input type="text" placeholder="Your Phone"/>
+                            <input type="text" placeholder="Your Phone" name="phone" required/>
                         </div>
                         <div>
-                            <input type="text" class="message-box" placeholder="Message"/>
+                            <input type="text" class="message-box" placeholder="Message" name="message" required/>
                         </div>
                         <div class="btn_box ">
-                            <button>
+                            <button type="submit">
                                 SEND
                             </button>
                         </div>
@@ -587,7 +587,10 @@ Logout</a></li>';
     </div>
 </section>
 <!-- end contact section -->
+<!-- JavaScript to handle form submission and show popup -->
 
+
+<!-- Bootstrap Modal for the popup -->
 <!-- info section -->
 
 <section class="info_section layout_padding2">

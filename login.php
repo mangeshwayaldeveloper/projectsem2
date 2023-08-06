@@ -45,6 +45,7 @@ function validateLogin($email, $password)
             if ($password === $storedPassword) {
                 // Login successful, set user session
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['url']=$row['url'];
                 // Redirect the user to the dashboard or other protected page
                 header("Location: index.php");
                 exit;
@@ -67,6 +68,7 @@ function validateLogin($email, $password)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
+
 
     if (!empty($email) && !empty($password)) {
         validateLogin($email, $password);
